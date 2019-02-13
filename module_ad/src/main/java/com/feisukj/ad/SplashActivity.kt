@@ -18,10 +18,10 @@ import com.feisukj.base.retrofitnet.HttpUtils
 import com.feisukj.base.util.IntentUtils
 import com.feisukj.base.util.PackageUtils
 import com.feisukj.base.util.SPUtil
+import com.feisukj.base.util.lg
 import com.google.gson.Gson
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.PermissionListener
-import com.yuntk.module.util.lg
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
