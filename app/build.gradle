@@ -54,15 +54,17 @@ android {
             minifyEnabled false //启用Proguard
         }
     }
+
     // 只在打包提测时改apk文件名，开发时记得注释掉
-    applicationVariants.all { variant ->
-        variant.getPackageApplication().outputDirectory = new File("C:/Users/Administrator/Desktop/apk")
-        variant.outputs.all {
-            outputFileName = "${variant.productFlavors[0].manifestPlaceholders.get("app_name_channel")}" +
-                    "_${variant.productFlavors[0].name}" +
-                    "_${variant.versionName}.apk"
-        }
-    }
+//    applicationVariants.all { variant ->
+//        variant.getPackageApplication().outputDirectory = new File("C:/Users/Administrator/Desktop/apk")
+//        variant.outputs.all {
+//            outputFileName = "${variant.productFlavors[0].manifestPlaceholders.get("app_name_channel")}" +
+//                    "_${variant.productFlavors[0].name}" +
+//                    "_${variant.versionName}.apk"
+//        }
+//    }
+
     productFlavors {
 
         _anzhi {

@@ -5,12 +5,17 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.multidex.MultiDex;
+
 import android.util.DisplayMetrics;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.feisukj.base.baseclass.AppCache;
 import com.feisukj.base.baseclass.Constants;
 import com.feisukj.base.baseclass.FileAccessor;
+
+
+import com.alibaba.android.arouter.launcher.ARouter;
+
 import com.feisukj.base.manager.ActivityManage;
 import com.feisukj.base.util.SPUtil;
 import com.feisukj.base.util.Utils;

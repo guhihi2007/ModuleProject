@@ -9,7 +9,10 @@ buildscript {
         jcenter()
     }
     dependencies {
+
         classpath 'com.android.tools.build:gradle:3.1.2'
+//        classpath 'com.android.tools.build:gradle:3.1.4'
+
         //数据库GreenDAO
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
         //walle多渠道打包 配置步骤一

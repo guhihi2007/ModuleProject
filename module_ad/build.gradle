@@ -1,6 +1,11 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+
+if (Boolean.valueOf(rootProject.ext.isModule)) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -22,7 +27,8 @@ android {
             }
         }
         //提供给广点通provider authorities字段
-        manifestPlaceholders = [applicationId: rootProject.ext.versions.applicationId]
+
+        manifestPlaceholders = [name: rootProject.ext.versions.applicationId]
     }
 
     buildTypes {
@@ -72,8 +78,15 @@ android {
     //（ 或文件夹下的源文件 ） 要被编译 ， 哪些源文件要被排除 。
     sourceSets {
         main {
-            if (!Boolean.valueOf(rootProject.ext.isModule)) {
+
+            if (Boolean.valueOf(rootProject.ext.isModule)) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    //排除java/debug文件夹下的所有文件
+                    exclude '*module'
+                }
             }
         }
     }
