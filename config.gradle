@@ -1,0 +1,136 @@
+/**
+ *  全局统一配置文件
+ */
+ext {
+    //true 每个业务Module可以单独开发
+    //false 每个业务Module以lib的方式运行
+    //修改之后需要Sync方可生效
+    isModule = false
+    //广告Key配置
+    adKey = [
+            GDT_APP_KEY     : '"1107967510"',
+            GDT_BANNER_ID   : '"9070142349362872"',
+            GDT_NATIVE_ID   : '"7060648399569831"',
+            GDT_INSERT_ID   : '"4040047359966834"',
+            GDT_SPLASH_ID   : '"5060445359268833"',
+
+            GOOGLE_APPID    : '"ca-app-pub-3147830794099363~5447107570"',
+            GOOGLE_BANNER_ID: '"ca-app-pub-3147830794099363/1188298360"',
+            GOOGLE_INSERT_ID: '"ca-app-pub-3147830794099363/2941607001"',
+            GOOGLE_NATIVE_ID: '"ca-app-pub-2144172051563531/1065857240"',
+
+            BAIDU_APPID     : '"123"',
+            BAIDU_SPLASH_ID : '"123"',
+            BAIDU_BANNER_ID : '"123"',
+            BAIDU_INSERT_ID : '"123"',
+
+    ]
+    //url配置
+    host =[
+            ad:'"http://114.215.47.46:8080"',//广告host
+            content:'"https://open.staging.qingting.fm"'//内容host
+
+    ]
+    //版本号
+    versions = [
+//            applicationId    : "com.feisukj.module",        //应用ID
+            applicationId    : "cn.yuntk.comic",        //应用ID
+            versionCode      : 20010,                    //版本号
+            versionName      : "1.0",              //版本名称
+
+            compileSdkVersion: 28,
+            minSdkVersion    : 17,
+            targetSdkVersion : 28,
+
+    ]
+    dependencies = ["appcompat_v7"         : "com.android.support:appcompat-v7:28.0.0",
+                    "support_annotations"  : "com.android.support:support-annotations:24.0.0",
+                    "design"               : "com.android.support:design:28.0.0",
+                    "support-v4"           : "com.android.support:support-v4:28.0.0",
+                    "recyclerview-v7"      : "com.android.support:recyclerview-v7:28.0.0",
+                    "constraint_layout"    : "com.android.support.constraint:constraint-layout:1.1.1",
+                    //方法数超过65535解决方法64K MultiDex分包方法
+                    "multidex"             : "com.android.support:multidex:1.0.2",
+
+                    //路由
+                    "arouter_api"          : "com.alibaba:arouter-api:1.4.0",
+                    "arouter_compiler"     : "com.alibaba:arouter-compiler:1.2.1",
+                    "arouter_annotation"   : "com.alibaba:arouter-annotation:1.0.4",
+
+                    //黄油刀
+                    "butterknife_compiler" : "com.jakewharton:butterknife-compiler:8.4.0",
+                    "butterknife"          : "com.jakewharton:butterknife:8.4.0",
+
+                    //事件订阅
+                    "eventbus"             : "org.greenrobot:eventbus:3.0.0",
+
+                    //文件下载
+                    "filedownloader"       : "com.liulishuo.filedownloader:library:1.7.5",
+
+                    //retrofit
+                    "retrofit"             : "com.squareup.retrofit2:retrofit:2.4.0",
+                    "retrofitConverter"    : "com.squareup.retrofit2:converter-gson:2.4.0",
+                    "retrofitAdapter"      : "com.squareup.retrofit2:adapter-rxjava2:2.4.0",
+
+                    //rxlifecycle
+                    "rxlifecycle"          : "com.trello.rxlifecycle2:rxlifecycle:2.1.0",
+                    "rxlifecycleComponents": "com.trello.rxlifecycle2:rxlifecycle-components:2.1.0",
+
+                    //rx android
+                    "rxjava"               : "io.reactivex.rxjava2:rxandroid:2.0.1",
+                    "rxandroid"            : "io.reactivex.rxjava2:rxjava:2.1.8",
+
+                    //Gson
+                    "Gson"                 : "com.google.code.gson:gson:2.8.5",
+
+                    //沉浸式状态栏
+                    "immersionbar"         : "com.gyf.immersionbar:immersionbar:2.3.2-beta05",
+
+                    //图片加载
+                    "glide"                : "com.github.bumptech.glide:glide:4.8.0",
+
+                    //数据库
+                    "greenDao"             : "org.greenrobot:greendao:3.2.2",
+
+                    //BaseRecyclerView
+                    "BaseRecyclerView"     : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30",
+
+                    //万能Adapter
+                    "superAdapter"         : "org.byteam.superadapter:superadapter:3.6.8",
+
+                    //下拉刷新上拉加载
+                    "smartRefresh"         : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-3",
+                    "smartRefreshHeader"   : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-3",
+
+                    //walle多渠道打包 配置步骤三
+                    "walle"                : "com.meituan.android.walle:library:1.1.6",
+
+                    //kotlin
+                    "kotlin"               : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+
+                    //设置内项目按下的效果
+                    "ripple"               : "com.balysv:material-ripple:1.0.2",
+
+                    //RX权限
+                    "rxpermissions"        : "com.github.tbruyelle:rxpermissions:0.10.2",
+
+                    //umeng
+                    "umeng"                : "com.umeng.sdk:common:1.5.3",
+                    "umengAnalytics"       : "com.umeng.sdk:analytics:7.5.1",
+
+                    //feedback
+                    "feedback"             : "com.aliyun.ams:alicloud-android-feedback:3.1.1@aar",
+                    "feedbackUtdid"        : "com.aliyun.ams:alicloud-android-utdid:1.1.5.3",
+                    "feedbackUt"           : "com.aliyun.ams:alicloud-android-ut:5.1.0",
+                    "feedbackUtils"        : "com.aliyun.ams:alicloud-android-utils:1.0.3",
+
+                    //bugly
+                    "buglyUpgrade"         : "com.tencent.bugly:crashreport_upgrade:1.3.1",
+                    "buglyReport"          : "com.tencent.bugly:nativecrashreport:3.3.1",
+                    //极光推送
+//                    "jpush"                : "cn.jiguang.sdk:jpush:3.1.6",
+//                    "jcore"                : "cn.jiguang.sdk:jcore:1.2.5"
+
+    ]
+
+}

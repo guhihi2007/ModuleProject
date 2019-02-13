@@ -1,0 +1,135 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion rootProject.ext.versions.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.versions.minSdkVersion
+        targetSdkVersion rootProject.ext.versions.targetSdkVersion
+        versionCode rootProject.ext.versions.versionCode
+        versionName rootProject.ext.versions.versionName
+
+        //MultiDex分包方法
+        multiDexEnabled true
+
+        //Arouter路由配置
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+        //防止编译的时候oom、GC
+        dexOptions {
+            javaMaxHeapSize "4g"
+        }
+    }
+
+    buildTypes {
+        release {
+            buildConfigField("String","AD_HOST", rootProject.ext.host.ad)
+            buildConfigField("String","CONTENT_HOST", rootProject.ext.host.content)
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField("String","AD_HOST", rootProject.ext.host.ad)
+            buildConfigField("String","CONTENT_HOST", rootProject.ext.host.content)
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        /********基础依赖:所有module通用依赖*********/
+        //Arouter路由
+        api rootProject.ext.dependencies["arouter_api"]
+        api rootProject.ext.dependencies["arouter_annotation"]
+        kapt rootProject.ext.dependencies["arouter_compiler"]
+
+        //把implementation 用api代替,它是对外部公开的, 所有其他的module就不需要添加该依赖
+        api rootProject.ext.dependencies["appcompat_v7"]
+        api rootProject.ext.dependencies["recyclerview-v7"]
+        api rootProject.ext.dependencies["support-v4"]
+        api rootProject.ext.dependencies["design"]
+        api rootProject.ext.dependencies["support_annotations"]
+        api rootProject.ext.dependencies["constraint_layout"]
+        //MultiDex分包方法
+        api rootProject.ext.dependencies["multidex"]
+
+        //eventbus 发布/订阅事件总线
+        api rootProject.ext.dependencies["eventbus"]
+        //沉浸栏
+        api rootProject.ext.dependencies["immersionbar"]
+        //图片加载
+        api rootProject.ext.dependencies["glide"]
+        //万能Adapter
+        api rootProject.ext.dependencies["superAdapter"]
+        //BaseRecyclerView
+        api rootProject.ext.dependencies["BaseRecyclerView"]
+        //下拉刷新下拉加载
+        api rootProject.ext.dependencies["smartRefresh"]
+        api rootProject.ext.dependencies["smartRefreshHeader"]
+        //GreenDao
+        api rootProject.ext.dependencies["greenDao"]
+        //kotlin
+        api rootProject.ext.dependencies["kotlin"]
+        //retrofit
+        api rootProject.ext.dependencies["retrofit"]
+        api rootProject.ext.dependencies["retrofitConverter"]
+        api rootProject.ext.dependencies["retrofitAdapter"]
+        //rxlifecycle
+        api rootProject.ext.dependencies["rxlifecycle"]
+        api rootProject.ext.dependencies["rxlifecycleComponents"]
+        //rxjava
+        api rootProject.ext.dependencies["rxjava"]
+        api rootProject.ext.dependencies["rxandroid"]
+        //Gson
+        api rootProject.ext.dependencies["Gson"]
+        //设置内项目按下的效果
+        api rootProject.ext.dependencies["ripple"]
+
+        //黄油刀
+//    api rootProject.ext.dependencies["butterknife"]
+//    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+        /********基础依赖:所有module通用依赖*********/
+
+        /********第三方依赖:在需要单独调用的module添加即可，如果放开的话，所有module都可以调用*********/
+
+        //下载
+//    api rootProject.ext.dependencies["filedownloader"]
+
+        //极光 需要用时可以把注释放开
+//    api rootProject.ext.dependencies["jpush"]
+//    api rootProject.ext.dependencies["jcore"]
+
+        //友盟统计
+//    api rootProject.ext.dependencies["umeng"]
+//    api rootProject.ext.dependencies["umengAnalytics"]
+
+        //阿里反馈
+//    api rootProject.ext.dependencies["feedback"]
+//    api rootProject.ext.dependencies["feedbackUtdid"]
+//    api rootProject.ext.dependencies["feedbackUt"]
+//    api rootProject.ext.dependencies["feedbackUtils"]
+
+        //bugly升级，崩溃
+//    api rootProject.ext.dependencies["buglyUpgrade"]
+//    api rootProject.ext.dependencies["buglyReport"]
+
+        /********第三方依赖:在需要单独调用的module添加即可，如果放开的话，所有module都可以调用*********/
+
+    }
+
+    /***********数据库:每个module可单独配置，也可以统一使用以下**********/
+//    greendao {
+//        schemaVersion 1
+//        daoPackage 'com.feisukj.base.db.gen'
+//        targetGenDir 'src/main/java'
+//    }
+}
+

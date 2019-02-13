@@ -1,0 +1,146 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'walle' //配置步骤二
+
+android {
+    compileSdkVersion rootProject.ext.versions.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.versions.minSdkVersion
+        targetSdkVersion rootProject.ext.versions.targetSdkVersion
+        versionCode rootProject.ext.versions.versionCode
+        versionName rootProject.ext.versions.versionName
+        //渠道统一维度
+        flavorDimensions "versionCode"
+        //MultiDex分包方法
+        multiDexEnabled true
+        //Arouter路由配置
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file(KEY_STORE)
+            storePassword KEY_STORE_PASSWORD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_ALIAS_PASSWORD
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+
+        debug {
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            debuggable false  //可以debug
+            minifyEnabled false //启用Proguard
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+            debuggable true  //可以debug
+            minifyEnabled false //启用Proguard
+        }
+    }
+    // 只在打包提测时改apk文件名，开发时记得注释掉
+//    applicationVariants.all { variant ->
+//        variant.getPackageApplication().outputDirectory = new File("C:/Users/Administrator/Desktop/apk")
+//        variant.outputs.all {
+//            outputFileName = "${variant.productFlavors[0].manifestPlaceholders.get("app_name_channel")}" +
+//                    "_${variant.productFlavors[0].name}" +
+//                    "_${variant.versionName}.apk"
+//        }
+//    }
+    productFlavors {
+
+        _anzhi {
+            applicationId rootProject.ext.versions.applicationId
+            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+                                    CHANNEL_VALUE:"_anzhi"]
+        }
+        _lenovo {
+
+            applicationId rootProject.ext.versions.applicationId
+            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+                                    CHANNEL_VALUE:"_lenovo"]
+        }
+        _oppo {
+
+            applicationId rootProject.ext.versions.applicationId
+            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+                                    CHANNEL_VALUE:"_oppo"]
+        }
+        _vivo {
+
+            applicationId rootProject.ext.versions.applicationId
+            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+                                    CHANNEL_VALUE:"_vivo"]
+        }
+        _360 {
+
+            applicationId rootProject.ext.versions.applicationId
+            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+                                    CHANNEL_VALUE:"_360"]
+        }
+        _xiaomi {
+
+            applicationId rootProject.ext.versions.applicationId
+            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+                                    CHANNEL_VALUE:"_xiaomi"]
+        }
+        _yingyongbao {
+
+            applicationId rootProject.ext.versions.applicationId
+            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+                                    CHANNEL_VALUE:"_yingyongbao"]
+        }
+        _baidu {
+
+            applicationId rootProject.ext.versions.applicationId
+            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+                                    CHANNEL_VALUE:"_baidu"]
+        }
+        _huawei {
+
+            applicationId rootProject.ext.versions.applicationId
+            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+                                    CHANNEL_VALUE:"_huawei"]
+        }
+        _meizu {
+
+            applicationId rootProject.ext.versions.applicationId
+            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+                                    CHANNEL_VALUE:"_meizu"]
+        }
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //公用依赖包
+    implementation project(':module_base')
+
+    api rootProject.ext.dependencies["arouter_api"]
+    api rootProject.ext.dependencies["arouter_annotation"]
+    kapt rootProject.ext.dependencies["arouter_compiler"]
+
+    if (!Boolean.valueOf(rootProject.ext.isModule)) {
+        //main模块
+        implementation project(':module_ad')
+        implementation project(':module_main')
+    }
+}
