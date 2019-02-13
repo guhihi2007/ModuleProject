@@ -1,0 +1,98 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.versions.compileSdkVersion
+
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.versions.minSdkVersion
+        targetSdkVersion rootProject.ext.versions.targetSdkVersion
+        versionCode rootProject.ext.versions.versionCode
+        versionName rootProject.ext.versions.versionName
+        //MultiDex分包方法
+        multiDexEnabled true
+
+        //Arouter路由配置
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+        //提供给广点通provider authorities字段
+        manifestPlaceholders = [applicationId: rootProject.ext.versions.applicationId]
+    }
+
+    buildTypes {
+        release {
+            buildConfigField("String", "GDT_APP_KEY", rootProject.ext.adKey.GDT_APP_KEY)
+            buildConfigField("String", "GDT_BANNER_ID", rootProject.ext.adKey.GDT_BANNER_ID)
+            buildConfigField("String", "GDT_NATIVE_ID", rootProject.ext.adKey.GDT_NATIVE_ID)
+            buildConfigField("String", "GDT_INSERT_ID", rootProject.ext.adKey.GDT_INSERT_ID)
+            buildConfigField("String", "GDT_SPLASH_ID", rootProject.ext.adKey.GDT_SPLASH_ID)
+
+            buildConfigField("String", "GOOGLE_APPID", rootProject.ext.adKey.GOOGLE_APPID)
+            buildConfigField("String", "GOOGLE_BANNER_ID", rootProject.ext.adKey.GOOGLE_BANNER_ID)
+            buildConfigField("String", "GOOGLE_INSERT_ID", rootProject.ext.adKey.GOOGLE_INSERT_ID)
+            buildConfigField("String", "GOOGLE_NATIVE_ID", rootProject.ext.adKey.GOOGLE_NATIVE_ID)
+
+            buildConfigField("String", "BAIDU_APPID", rootProject.ext.adKey.BAIDU_APPID)
+            buildConfigField("String", "BAIDU_SPLASH_ID", rootProject.ext.adKey.BAIDU_SPLASH_ID)
+            buildConfigField("String", "BAIDU_BANNER_ID", rootProject.ext.adKey.BAIDU_BANNER_ID)
+            buildConfigField("String", "BAIDU_INSERT_ID", rootProject.ext.adKey.BAIDU_INSERT_ID)
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField("String", "GDT_APP_KEY", rootProject.ext.adKey.GDT_APP_KEY)
+            buildConfigField("String", "GDT_BANNER_ID", rootProject.ext.adKey.GDT_BANNER_ID)
+            buildConfigField("String", "GDT_NATIVE_ID", rootProject.ext.adKey.GDT_NATIVE_ID)
+            buildConfigField("String", "GDT_INSERT_ID", rootProject.ext.adKey.GDT_INSERT_ID)
+            buildConfigField("String", "GDT_SPLASH_ID", rootProject.ext.adKey.GDT_SPLASH_ID)
+
+            buildConfigField("String", "GOOGLE_APPID", rootProject.ext.adKey.GOOGLE_APPID)
+            buildConfigField("String", "GOOGLE_BANNER_ID", rootProject.ext.adKey.GOOGLE_BANNER_ID)
+            buildConfigField("String", "GOOGLE_INSERT_ID", rootProject.ext.adKey.GOOGLE_INSERT_ID)
+            buildConfigField("String", "GOOGLE_NATIVE_ID", rootProject.ext.adKey.GOOGLE_NATIVE_ID)
+
+            buildConfigField("String", "BAIDU_APPID", rootProject.ext.adKey.BAIDU_APPID)
+            buildConfigField("String", "BAIDU_SPLASH_ID", rootProject.ext.adKey.BAIDU_SPLASH_ID)
+            buildConfigField("String", "BAIDU_BANNER_ID", rootProject.ext.adKey.BAIDU_BANNER_ID)
+            buildConfigField("String", "BAIDU_INSERT_ID", rootProject.ext.adKey.BAIDU_INSERT_ID)
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //java插件引入了一个概念叫做SourceSets，通过修改SourceSets中的属性，可以指定哪些源文件
+    //（ 或文件夹下的源文件 ） 要被编译 ， 哪些源文件要被排除 。
+    sourceSets {
+        main {
+            if (!Boolean.valueOf(rootProject.ext.isModule)) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //公用依赖包
+    implementation project(path: ':module_base')
+    //广点通广告需要
+    implementation files('libs/android-query-full.0.26.7.jar')
+    //Baidu AD_SDK
+    implementation files('libs/Baidu_MobAds_SDK.jar')
+    //Google AD_SDK
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    //申请权限
+    implementation 'com.yanzhenjie:permission:1.1.0'
+
+    api rootProject.ext.dependencies["arouter_api"]
+    api rootProject.ext.dependencies["arouter_annotation"]
+    kapt rootProject.ext.dependencies["arouter_compiler"]
+}
