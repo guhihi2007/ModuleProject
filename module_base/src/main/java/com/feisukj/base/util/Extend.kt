@@ -1,4 +1,4 @@
-package com.yuntk.module.util
+package com.feisukj.base.util
 
 import android.app.Activity
 import android.app.Application
@@ -7,7 +7,6 @@ import android.os.Handler
 import android.support.v4.app.Fragment
 import android.widget.Toast
 import com.feisukj.base.BaseApplication
-import com.feisukj.base.util.LogUtils
 
 /**
  * Author : Gupingping
