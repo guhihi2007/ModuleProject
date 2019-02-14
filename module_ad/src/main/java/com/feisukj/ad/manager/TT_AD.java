@@ -28,6 +28,7 @@ import com.feisukj.ad.BuildConfig;
 import com.feisukj.ad.R;
 import com.feisukj.ad.SplashActivity;
 import com.feisukj.ad.bean.LoadEvent;
+import com.feisukj.base.BaseApplication;
 import com.feisukj.base.bean.ad.AD;
 import com.feisukj.base.util.LogUtils;
 
@@ -53,6 +54,10 @@ public class TT_AD extends AbsADParent implements WeakHandler.IHandler {
     private AQuery2 mAQuery;
     //开屏广告加载发生超时但是SDK没有及时回调结果的时候，做的一层保护。
     private final WeakHandler mHandler = new WeakHandler(this);
+
+    public TT_AD() {
+        TTAdManagerHolder.init(BaseApplication.getApplication());
+    }
 
     @Override
     protected void showAdView(AD.AdType type) {
@@ -179,6 +184,7 @@ public class TT_AD extends AbsADParent implements WeakHandler.IHandler {
                 //设置轮播的时间间隔  间隔在30s到120秒之间的值，不设置默认不轮播
                 ad.setSlideIntervalTime(30 * 1000);
                 mContainer.removeAllViews();
+                mContainer.setVisibility(View.VISIBLE);
                 mContainer.addView(bannerView);
                 //设置广告互动监听回调
                 ad.setBannerInteractionListener(new TTBannerAd.AdInteractionListener() {

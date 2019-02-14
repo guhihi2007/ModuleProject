@@ -7,15 +7,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.feisukj.ad.ADConstants;
-import com.feisukj.base.ARouterConfig;
+import com.feisukj.base.bean.ad.ADConstants;
+import com.feisukj.ad.SplashActivity;
 import com.feisukj.base.BaseApplication;
 import com.feisukj.base.bean.ad.AD;
 import com.feisukj.base.bean.ad.OriginBean;
 import com.feisukj.base.bean.ad.StatusBean;
 import com.feisukj.base.bean.ad.TypeBean;
 import com.feisukj.base.util.GsonUtils;
-import com.feisukj.base.util.IntentUtils;
 import com.feisukj.base.util.LogUtils;
 import com.feisukj.base.util.NetworkUtils;
 import com.feisukj.base.util.SPUtil;
@@ -54,12 +53,11 @@ public class AdManager implements OnInsertADListener {
     private boolean isLoading;
     private long pages;
     private boolean isRunning = true;
-    private static long lastExecuted;
-    private int retryCounts;
     private HashMap<AD.AdType, List<OriginBean>> map;
     private String tag_ad;
+    private FrameLayout nativeAdLayout;
 
-    public AdManager(Activity activity, String page, FrameLayout container, ImageView logo, TextView skipView, boolean isLoading, String tag_ad) {
+    public AdManager(Activity activity, String page, FrameLayout container, ImageView logo, TextView skipView, boolean isLoading, String tag_ad, FrameLayout nativeAdLayout) {
         this.activity = activity;
         this.page = page;
         this.container = container;
@@ -67,6 +65,8 @@ public class AdManager implements OnInsertADListener {
         this.skipView = skipView;
         this.isLoading = isLoading;
         this.tag_ad = tag_ad;
+        this.nativeAdLayout = nativeAdLayout;
+
         pool = Executors.newFixedThreadPool(1);
     }
 
@@ -75,6 +75,8 @@ public class AdManager implements OnInsertADListener {
             @Override
             public void run() {
                 String string = SPUtil.getInstance().getString(page);
+                LogUtils.INSTANCE.e(TAG, "pool run page==" + page + ",string==" + string);
+
                 if (!TextUtils.isEmpty(string)) {
                     pageBean = GsonUtils.parseObject(string, TypeBean.class);
                     LogUtils.INSTANCE.e(TAG, "pool run pageBean==" + SPUtil.getInstance().getString(page));
@@ -170,8 +172,8 @@ public class AdManager implements OnInsertADListener {
             BaseApplication.handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-//                    ((SplashActivity) activity).checkIn();
-                    IntentUtils.toActivity(ARouterConfig.HOME_ACTIVITY);
+                    ((SplashActivity) activity).checkIn();
+//                    IntentUtils.toActivity(ARouterConfig.HOME_ACTIVITY);
                 }
             }, 2000);
         }
@@ -184,12 +186,12 @@ public class AdManager implements OnInsertADListener {
             LogUtils.INSTANCE.e(TAG, "BANNER-----开关关闭，或者无网络不执行");
             return;
         }
-        boolean isTimer = SPUtil.getInstance().getBoolean(page + ADConstants.AD_BANNER_IS_TIMER);
-        if (isTimer) {
-//            此页面已经开启了定时器
-            LogUtils.INSTANCE.e(TAG, "BANNER-----isTimer:" + page + isTimer);
-            return;
-        }
+//        boolean isTimer = SPUtil.getInstance().getBoolean(page + ADConstants.AD_BANNER_IS_TIMER);
+//        if (isTimer) {
+////            此页面已经开启了定时器
+//            LogUtils.INSTANCE.e(TAG, "BANNER-----isTimer:" + page + isTimer);
+//            return;
+//        }
         scheduledExecutorService = new ScheduledThreadPoolExecutor(1);
 //        开启定时切换
         timerTask = new TimerTask() {
@@ -317,17 +319,14 @@ public class AdManager implements OnInsertADListener {
                 LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   百度-- " + page + " ---" + type);
                 adView = new BD_AD();
             case toutiao:
-                LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   头条-- " + page + " ---" + type);
+        LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   头条-- " + page + " ---" + type);
                 adView = new TT_AD();
                 break;
         }
 
         adView.setActivity(activity);
         adView.setContainer(container);
-
-//        if (page.equals(ADConstants.READER_PAGE)) {
-//            adView.setNight(SPUtil.getInstance().getBoolean(Constants.ISNIGHT, false));
-//        }
+        adView.setNativeAdLayout(nativeAdLayout);
 
         adView.setPage(page);
         adView.setLogo(logo);
@@ -352,7 +351,7 @@ public class AdManager implements OnInsertADListener {
     }
 
     //获取当前页面需要显示的广告类型，和广告源，添加到map
-    public HashMap<AD.AdType, List<OriginBean>> getShowTypeAndOrigin() {
+    private HashMap<AD.AdType, List<OriginBean>> getShowTypeAndOrigin() {
 
         HashMap<AD.AdType, List<OriginBean>> map = new HashMap<>();
         //1.先获取页面的广告类型

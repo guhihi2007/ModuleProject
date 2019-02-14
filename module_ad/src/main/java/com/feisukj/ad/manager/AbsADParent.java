@@ -6,7 +6,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.feisukj.ad.ADConstants;
+import com.feisukj.base.bean.ad.ADConstants;
 import com.feisukj.base.bean.ad.AD;
 import com.feisukj.base.util.LogUtils;
 import com.feisukj.base.util.SPUtil;
@@ -68,8 +68,8 @@ abstract class AbsADParent {
         mPage = page;
     }
 
-    public void setNativeLayout(FrameLayout nativeLayout) {
-        this.nativeLayout = nativeLayout;
+    public void setNativeAdLayout(FrameLayout frameLayout) {
+        this.nativeLayout = frameLayout;
     }
 
     protected void saveInsertShowTime() {

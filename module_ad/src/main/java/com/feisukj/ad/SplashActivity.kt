@@ -13,6 +13,7 @@ import com.feisukj.ad.permission.SetPermissionDialog
 import com.feisukj.base.ARouterConfig
 import com.feisukj.base.BaseApplication
 import com.feisukj.base.api.AdService
+import com.feisukj.base.bean.ad.ADConstants
 import com.feisukj.base.bean.ad.AdsConfig
 import com.feisukj.base.retrofitnet.HttpUtils
 import com.feisukj.base.util.IntentUtils
@@ -52,7 +53,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         compositeDisposable = CompositeDisposable()
-
+        BaseApplication.isFromStart = true
         channel = PackageUtils.getAppMetaData(this, "CHANNEL")
         BaseApplication.channel = channel
         askPermissions()
@@ -75,6 +76,10 @@ class SplashActivity : AppCompatActivity() {
                     override fun onNext(t: AdsConfig) {
                         val gson = Gson()
                         SPUtil.getInstance().putString(ADConstants.START_PAGE, gson.toJson(t.data?.start_page))
+                        SPUtil.getInstance().putString(ADConstants.CATEGORY_PAGE, gson.toJson(t.data?.category_page))
+                        SPUtil.getInstance().putString(ADConstants.DETAIL_PAGE, gson.toJson(t.data?.detail_page))
+                        SPUtil.getInstance().putString(ADConstants.START_PAGE, gson.toJson(t.data?.start_page))
+                        SPUtil.getInstance().putString(ADConstants.START_PAGE, gson.toJson(t.data?.start_page))
                     }
 
                     override fun onError(e: Throwable) {
@@ -95,9 +100,6 @@ class SplashActivity : AppCompatActivity() {
                     .setLogo(app_logo)
                     .create()
             builder?.show()
-//            BaseApplication.handler.postDelayed({
-//                checkIn()
-//            }, 1000)
         } else {
             val dialog = object : AuthorityDialog(this) {
                 override fun onClick(v: View?) {
@@ -204,6 +206,7 @@ class SplashActivity : AppCompatActivity() {
 
     fun checkIn() {
         IntentUtils.toActivity(ARouterConfig.HOME_ACTIVITY)
+        BaseApplication.isFromStart = false
         finish()
     }
 

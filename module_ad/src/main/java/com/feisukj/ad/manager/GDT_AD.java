@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.feisukj.ad.BuildConfig;
+import com.feisukj.ad.SplashActivity;
 import com.feisukj.ad.bean.LoadEvent;
 import com.feisukj.base.ARouterConfig;
 import com.feisukj.base.BaseApplication;
@@ -110,8 +111,7 @@ public class GDT_AD extends AbsADParent {
                         mActivity.finish();
                         return;
                     }
-                    IntentUtils.toActivity(ARouterConfig.HOME_ACTIVITY);
-                    mActivity.finish();
+                    ((SplashActivity) mActivity).checkIn();
                 } else {
                     EventBus.getDefault().post(new LoadEvent(true));
                 }
@@ -123,14 +123,12 @@ public class GDT_AD extends AbsADParent {
                     if (mLogo != null) {
                         mLogo.setVisibility(View.GONE);
                     }
-                    LogUtils.INSTANCE.i(TAG, "onNoAD");
+                    LogUtils.INSTANCE.i(TAG, "onNoAD adError=="+adError.getErrorMsg());
                     if (isLoading) {
                         mActivity.finish();
                         return;
                     }
-                    IntentUtils.toActivity(ARouterConfig.HOME_ACTIVITY);
-                    mActivity.finish();
-
+                    ((SplashActivity) mActivity).checkIn();
                 } else {
                     EventBus.getDefault().post(new LoadEvent(true));
                 }
@@ -267,7 +265,7 @@ public class GDT_AD extends AbsADParent {
             @Override
             public void onADReceive() {
                 LogUtils.INSTANCE.i(TAG, "initGDT_Insert_onADReceive");
-                if (null != mActivity && !BaseApplication.isBackGround) {
+                if (null != mActivity && BaseApplication.isForeground) {
                     status = true;
                     insert_gdt.show();
                     //记录此次显示时间

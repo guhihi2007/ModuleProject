@@ -12,6 +12,7 @@ android {
 
 
     defaultConfig {
+//        applicationId 'com.feisushouyj2019.app' //单独Module运行时，测试广告用，正常要注释掉
         minSdkVersion rootProject.ext.versions.minSdkVersion
         targetSdkVersion rootProject.ext.versions.targetSdkVersion
         versionCode rootProject.ext.versions.versionCode
@@ -30,6 +31,23 @@ android {
         manifestPlaceholders = [name : rootProject.ext.versions.applicationId,
                                 baidu: rootProject.ext.adKey.BAIDU_APPID]
     }
+//单独Module运行时，测试广告用，正常要注释掉
+//    signingConfigs {
+//        release {
+//            storeFile file(KEY_STORE)
+//            storePassword KEY_STORE_PASSWORD
+//            keyAlias KEY_ALIAS
+//            keyPassword KEY_ALIAS_PASSWORD
+//
+//            v1SigningEnabled true
+//            v2SigningEnabled true
+//        }
+//
+//        debug {
+//            v1SigningEnabled true
+//            v2SigningEnabled true
+//        }
+//    }
 
     buildTypes {
         release {
@@ -55,6 +73,7 @@ android {
             buildConfigField("String", "TOUTIAO_INSERT_ID", rootProject.ext.adKey.TOUTIAO_INSERT_ID)
             buildConfigField("String", "TOUTIAO_NATIVE_ID", rootProject.ext.adKey.TOUTIAO_NATIVE_ID)
 
+//            signingConfig signingConfigs.release //单独Module运行时，测试广告用，正常要注释掉
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -81,6 +100,7 @@ android {
             buildConfigField("String", "TOUTIAO_INSERT_ID", rootProject.ext.adKey.TOUTIAO_INSERT_ID)
             buildConfigField("String", "TOUTIAO_NATIVE_ID", rootProject.ext.adKey.TOUTIAO_NATIVE_ID)
 
+//            signingConfig signingConfigs.release //单独Module运行时，测试广告用，正常要注释掉
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

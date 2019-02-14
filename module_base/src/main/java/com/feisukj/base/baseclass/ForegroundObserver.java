@@ -2,16 +2,25 @@ package com.feisukj.base.baseclass;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import com.feisukj.base.ARouterConfig;
 import com.feisukj.base.BaseApplication;
+import com.feisukj.base.bean.ad.ADConstants;
+import com.feisukj.base.util.IntentUtils;
+import com.feisukj.base.util.LogUtils;
+import com.feisukj.base.util.NetworkUtils;
+import com.feisukj.base.util.SPUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static com.feisukj.base.bean.ad.ADConstants.AD_APP_BACKGROUND_TIME;
 
 /**
  * Created by hzwangchenyan on 2017/9/20.
@@ -98,9 +107,33 @@ public class ForegroundObserver implements Application.ActivityLifecycleCallback
             Log.i(TAG, "app in foreground");
             notify(activity, true);
             BaseApplication.isForeground = true;
+            if (!BaseApplication.isFromStart){
+                gotoSplashADActivity(activity);
+            }
         }
     }
 
+    private void gotoSplashADActivity(Activity activity) {
+        LogUtils.INSTANCE.i("ForegroundObserver：进入前台getLocalClassName："+activity.getLocalClassName());
+        if (SPUtil.getInstance().getBoolean(ADConstants.AD_SPLASH_STATUS) && needSplashAD()) {
+            IntentUtils.toActivity(ARouterConfig.SPLASH_ACTIVITY_AD);
+        }
+    }
+
+    /**
+     * 进入后台，再次进入app是否展示开屏广告
+     * 时间超过间隔，并且有网络才展示
+     *
+     * @return
+     */
+    public boolean needSplashAD() {
+        long current = System.currentTimeMillis();
+        long background = SPUtil.getInstance().getLong(AD_APP_BACKGROUND_TIME, 0);
+        long gapTime = (current - background) / 1000;
+        long serverTime = SPUtil.getInstance().getLong(ADConstants.AD_SPREAD_PERIOD, 5);
+        LogUtils.INSTANCE.i("ForegroundObserver gapTime==" + gapTime + ",serverTime===" + serverTime);
+        return gapTime >= serverTime && serverTime != 0 && NetworkUtils.isConnected(BaseApplication.getApplication());
+    }
     @Override
     public void onActivityPaused(final Activity activity) {
         resumeActivityCount--;

@@ -29,7 +29,6 @@ public class BaseApplication extends Application {
     public static BaseApplication application;
     private ActivityManage activityManage;
     public static Handler handler;
-    public static boolean isBackGround;
     public static boolean isForeground;
     public static boolean isFromStart;
     public static String channel;

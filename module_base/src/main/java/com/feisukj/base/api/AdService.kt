@@ -13,7 +13,7 @@ import retrofit2.http.Query
  */
 interface AdService {
     @GET("/ytkapplicaton/anListenAppConfig")
-    fun getADConfig(@Query("name") name: String="cn.yuntk.comic",
+    fun getADConfig(@Query("name") name: String="cn.ytk.weather",
                     @Query("channel") channel: String,
                     @Query("version") version: String= BuildConfig.VERSION_NAME): Observable<AdsConfig>
 }

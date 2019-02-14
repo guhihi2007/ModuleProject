@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.feisukj.ad.manager.AdController
 import com.feisukj.base.ARouterConfig
 import com.feisukj.base.BaseApplication
+import com.feisukj.base.bean.ad.ADConstants
 import kotlinx.android.synthetic.main.activity_splash.*
 
 /**
@@ -24,10 +25,9 @@ class SplashActivityAD : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
-
         setContentView(R.layout.activity_splash_ad)
-        BaseApplication.isBackGround = false
-        BaseApplication.isFromStart = true
+
+        BaseApplication.isFromStart=true
         builder = AdController.Builder(this)
                 .setPage(ADConstants.START_PAGE)
                 .setContainer(splash_container)
@@ -48,6 +48,7 @@ class SplashActivityAD : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        BaseApplication.isFromStart=false
         builder.destroy()
     }
 }

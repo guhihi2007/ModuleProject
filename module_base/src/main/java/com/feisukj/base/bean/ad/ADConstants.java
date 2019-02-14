@@ -1,4 +1,4 @@
-package com.feisukj.ad;
+package com.feisukj.base.bean.ad;
 
 
 /**
@@ -8,16 +8,16 @@ package com.feisukj.ad;
 public class ADConstants {
 
     /************************页面命名 存储广告显示配置*************************/
-    public static final String MUSIC_DETAIL = "music_detail";//详情页面
-    public static final String HOME_PAGE_NEW = "home_page_new";//主页插屏
+    public static final String START_PAGE = "start_page";
+    public static final String CATEGORY_PAGE = "category_page";//分类页面
+    public static final String DETAIL_PAGE = "music_detail";//详情页面
+
     public static final String HOME_PAGE_LIST1 = "home_page_list1";//主页列表1
     public static final String HOME_PAGE_LIST2 = "home_page_list2";//主页列表2
     public static final String HOME_PAGE_LIST3 = "home_page_list3";//主页列表3
     public static final String HOME_PAGE_LIST4 = "home_page_list4";//主页列表4
 
-    public static final String CATEGORY_PAGE = "category_page";//分类页面
     public static final String LISTENING_PAGE = "listening_page";//播放页面
-    public static final String START_PAGE = "start_page";
     /************************页面命名*************************/
 
     /************************开屏广告*************************/

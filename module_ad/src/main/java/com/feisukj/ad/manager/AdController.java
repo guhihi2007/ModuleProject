@@ -24,6 +24,7 @@ public class AdController {
     private ImageView logo;
     private boolean isLoading;
     private String tag_ad = "";
+    private FrameLayout nativeAdLayout;
 
     public AdController(Activity activity, String page) {
         this.activity = activity;
@@ -31,7 +32,7 @@ public class AdController {
     }
 
     public void show() {
-        manager = new AdManager(activity, page, Container, logo, skipView, isLoading, tag_ad);
+        manager = new AdManager(activity, page, Container, logo, skipView, isLoading, tag_ad,nativeAdLayout);
         manager.show();
     }
 
@@ -95,6 +96,10 @@ public class AdController {
         this.isLoading = isLoading;
     }
 
+    public void setNativeAdLayout(FrameLayout nativeAdLayout) {
+        this.nativeAdLayout = nativeAdLayout;
+    }
+
     public static class Builder {
         private TextView skipView;
         private FrameLayout container;
@@ -103,6 +108,7 @@ public class AdController {
         private Activity activity;
         private boolean isLoading;
         private String tag_ad = "";
+        private FrameLayout nativeAdLayout;
 
         public String getTag_ad() {
             return tag_ad;
@@ -143,6 +149,11 @@ public class AdController {
             return this;
         }
 
+        public Builder setNativeAdLayout(FrameLayout nativeAdLayout) {
+            this.nativeAdLayout = nativeAdLayout;
+            return this;
+        }
+
         public AdController create() {
 
             final AdController controller = new AdController(activity, page);
@@ -154,6 +165,10 @@ public class AdController {
             }
             if (logo != null) {
                 controller.setLogo(logo);
+            }
+
+            if (nativeAdLayout != null) {
+                controller.setNativeAdLayout(nativeAdLayout);
             }
 
             if (skipView != null) {
