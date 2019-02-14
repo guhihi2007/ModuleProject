@@ -8,12 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.feisukj.ad.ADConstants;
-import com.feisukj.ad.bean.AD;
-import com.feisukj.ad.bean.OriginBean;
-import com.feisukj.ad.bean.StatusBean;
-import com.feisukj.ad.bean.TypeBean;
 import com.feisukj.base.ARouterConfig;
 import com.feisukj.base.BaseApplication;
+import com.feisukj.base.bean.ad.AD;
+import com.feisukj.base.bean.ad.OriginBean;
+import com.feisukj.base.bean.ad.StatusBean;
+import com.feisukj.base.bean.ad.TypeBean;
 import com.feisukj.base.util.GsonUtils;
 import com.feisukj.base.util.IntentUtils;
 import com.feisukj.base.util.LogUtils;
@@ -316,7 +316,10 @@ public class AdManager implements OnInsertADListener {
             case bd:
                 LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   百度-- " + page + " ---" + type);
                 adView = new BD_AD();
-
+            case toutiao:
+                LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   头条-- " + page + " ---" + type);
+                adView = new TT_AD();
+                break;
         }
 
         adView.setActivity(activity);

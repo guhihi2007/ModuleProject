@@ -16,8 +16,8 @@ import com.baidu.mobads.SplashAd;
 import com.baidu.mobads.SplashAdListener;
 import com.feisukj.ad.BuildConfig;
 import com.feisukj.ad.SplashActivity;
-import com.feisukj.ad.bean.AD;
 import com.feisukj.base.BaseApplication;
+import com.feisukj.base.bean.ad.AD;
 import com.feisukj.base.util.LogUtils;
 
 import org.json.JSONObject;

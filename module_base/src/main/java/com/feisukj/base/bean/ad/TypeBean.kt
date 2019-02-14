@@ -9,5 +9,5 @@ class TypeBean {
     var insert_screen: StatusBean? = null
     var banner_screen: StatusBean? = null
     var spread_screen: StatusBean? = null
-    var native_advertising: StatusBean?=null
+    var native_screen: StatusBean?=null
 }

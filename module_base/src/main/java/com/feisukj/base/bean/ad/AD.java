@@ -11,7 +11,7 @@ public abstract class AD {
     }
 
     public enum AdOrigin {
-        gdt, bd,google
+        gdt, bd,google,toutiao
     }
 
 }

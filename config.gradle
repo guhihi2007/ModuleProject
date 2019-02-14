@@ -8,39 +8,44 @@ ext {
     isModule = false
     //广告Key配置
     adKey = [
-            GDT_APP_KEY     : '"1107967510"',
-            GDT_BANNER_ID   : '"9070142349362872"',
-            GDT_NATIVE_ID   : '"7060648399569831"',
-            GDT_INSERT_ID   : '"4040047359966834"',
-            GDT_SPLASH_ID   : '"5060445359268833"',
+            GDT_APP_KEY      : '"1107967510"',
+            GDT_BANNER_ID    : '"9070142349362872"',
+            GDT_NATIVE_ID    : '"7060648399569831"',
+            GDT_INSERT_ID    : '"4040047359966834"',
+            GDT_SPLASH_ID    : '"5060445359268833"',
 
-            GOOGLE_APPID    : '"ca-app-pub-3147830794099363~5447107570"',
-            GOOGLE_BANNER_ID: '"ca-app-pub-3147830794099363/1188298360"',
-            GOOGLE_INSERT_ID: '"ca-app-pub-3147830794099363/2941607001"',
-            GOOGLE_NATIVE_ID: '"ca-app-pub-2144172051563531/1065857240"',
+            GOOGLE_APPID     : '"ca-app-pub-3147830794099363~5447107570"',
+            GOOGLE_BANNER_ID : '"ca-app-pub-3147830794099363/1188298360"',
+            GOOGLE_INSERT_ID : '"ca-app-pub-3147830794099363/2941607001"',
+            GOOGLE_NATIVE_ID : '"ca-app-pub-2144172051563531/1065857240"',
 
-            BAIDU_APPID     : '"123"',
-            BAIDU_SPLASH_ID : '"123"',
-            BAIDU_BANNER_ID : '"123"',
-            BAIDU_INSERT_ID : '"123"',
+            BAIDU_APPID      : '"123"',
+            BAIDU_SPLASH_ID  : '"123"',
+            BAIDU_BANNER_ID  : '"123"',
+            BAIDU_INSERT_ID  : '"123"',
 
+            TOUTIAO_APPID    : '"123"',
+            TOUTIAO_SPLASH_ID: '"123"',
+            TOUTIAO_BANNER_ID: '"123"',
+            TOUTIAO_INSERT_ID: '"123"',
+            TOUTIAO_NATIVE_ID: '"123"',
     ]
     //url配置
-    host =[
-            ad:'"http://114.215.47.46:8080"',//广告host
-            content:'"https://open.staging.qingting.fm"'//内容host
+    host = [
+            ad     : '"http://114.215.47.46:8080"',//广告host
+            content: '"https://open.staging.qingting.fm"'//内容host
 
     ]
     //版本号
     versions = [
 //            applicationId    : "com.feisukj.module",        //应用ID
-            applicationId    : "cn.yuntk.comic",        //应用ID
-            versionCode      : 20010,                    //版本号
-            versionName      : "1.0",              //版本名称
+applicationId    : "cn.yuntk.comic",        //应用ID
+versionCode      : 20010,                    //版本号
+versionName      : "1.0",              //版本名称
 
-            compileSdkVersion: 28,
-            minSdkVersion    : 17,
-            targetSdkVersion : 28,
+compileSdkVersion: 28,
+minSdkVersion    : 17,
+targetSdkVersion : 28,
 
     ]
     dependencies = ["appcompat_v7"         : "com.android.support:appcompat-v7:28.0.0",

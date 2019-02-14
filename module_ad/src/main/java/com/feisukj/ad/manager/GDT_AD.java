@@ -6,10 +6,10 @@ import android.util.Log;
 import android.view.View;
 
 import com.feisukj.ad.BuildConfig;
-import com.feisukj.ad.bean.AD;
 import com.feisukj.ad.bean.LoadEvent;
 import com.feisukj.base.ARouterConfig;
 import com.feisukj.base.BaseApplication;
+import com.feisukj.base.bean.ad.AD;
 import com.feisukj.base.util.IntentUtils;
 import com.feisukj.base.util.LogUtils;
 import com.qq.e.ads.banner.ADSize;

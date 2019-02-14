@@ -3,8 +3,8 @@ package com.feisukj.ad.manager;
 import android.view.View;
 
 import com.feisukj.ad.BuildConfig;
-import com.feisukj.ad.bean.AD;
 import com.feisukj.base.BaseApplication;
+import com.feisukj.base.bean.ad.AD;
 import com.feisukj.base.util.LogUtils;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;

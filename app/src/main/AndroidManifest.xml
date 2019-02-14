@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.feisukj.moduleproject">
 
 
@@ -9,7 +10,9 @@
         android:label="${app_name_channel}"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:replace="android:label"
+        >
         <meta-data
             android:name="CHANNEL"
             android:value="${CHANNEL_VALUE}" />

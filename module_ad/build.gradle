@@ -1,4 +1,3 @@
-
 if (Boolean.valueOf(rootProject.ext.isModule)) {
     apply plugin: 'com.android.application'
 } else {
@@ -28,7 +27,8 @@ android {
         }
         //提供给广点通provider authorities字段
 
-        manifestPlaceholders = [name: rootProject.ext.versions.applicationId]
+        manifestPlaceholders = [name : rootProject.ext.versions.applicationId,
+                                baidu: rootProject.ext.adKey.BAIDU_APPID]
     }
 
     buildTypes {
@@ -49,6 +49,12 @@ android {
             buildConfigField("String", "BAIDU_BANNER_ID", rootProject.ext.adKey.BAIDU_BANNER_ID)
             buildConfigField("String", "BAIDU_INSERT_ID", rootProject.ext.adKey.BAIDU_INSERT_ID)
 
+            buildConfigField("String", "TOUTIAO_APPID", rootProject.ext.adKey.TOUTIAO_APPID)
+            buildConfigField("String", "TOUTIAO_SPLASH_ID", rootProject.ext.adKey.TOUTIAO_SPLASH_ID)
+            buildConfigField("String", "TOUTIAO_BANNER_ID", rootProject.ext.adKey.TOUTIAO_BANNER_ID)
+            buildConfigField("String", "TOUTIAO_INSERT_ID", rootProject.ext.adKey.TOUTIAO_INSERT_ID)
+            buildConfigField("String", "TOUTIAO_NATIVE_ID", rootProject.ext.adKey.TOUTIAO_NATIVE_ID)
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -68,6 +74,12 @@ android {
             buildConfigField("String", "BAIDU_SPLASH_ID", rootProject.ext.adKey.BAIDU_SPLASH_ID)
             buildConfigField("String", "BAIDU_BANNER_ID", rootProject.ext.adKey.BAIDU_BANNER_ID)
             buildConfigField("String", "BAIDU_INSERT_ID", rootProject.ext.adKey.BAIDU_INSERT_ID)
+
+            buildConfigField("String", "TOUTIAO_APPID", rootProject.ext.adKey.TOUTIAO_APPID)
+            buildConfigField("String", "TOUTIAO_SPLASH_ID", rootProject.ext.adKey.TOUTIAO_SPLASH_ID)
+            buildConfigField("String", "TOUTIAO_BANNER_ID", rootProject.ext.adKey.TOUTIAO_BANNER_ID)
+            buildConfigField("String", "TOUTIAO_INSERT_ID", rootProject.ext.adKey.TOUTIAO_INSERT_ID)
+            buildConfigField("String", "TOUTIAO_NATIVE_ID", rootProject.ext.adKey.TOUTIAO_NATIVE_ID)
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -102,6 +114,9 @@ dependencies {
     implementation files('libs/Baidu_MobAds_SDK.jar')
     //Google AD_SDK
     implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    //头条SDK
+    implementation files('libs/open_ad_sdk.aar')
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.6'
     //申请权限
     implementation 'com.yanzhenjie:permission:1.1.0'
 

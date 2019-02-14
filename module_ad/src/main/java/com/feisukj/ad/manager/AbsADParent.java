@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.feisukj.ad.ADConstants;
-import com.feisukj.ad.bean.AD;
+import com.feisukj.base.bean.ad.AD;
 import com.feisukj.base.util.LogUtils;
 import com.feisukj.base.util.SPUtil;
 
@@ -26,6 +26,7 @@ abstract class AbsADParent {
     protected String mPage;
     protected boolean isLoading;
     protected ImageView splashHolder;
+    protected FrameLayout nativeLayout;//阅读页原生广告容器
 
     protected abstract void showAdView(AD.AdType type);
 
@@ -65,6 +66,10 @@ abstract class AbsADParent {
 
     public void setPage(String page) {
         mPage = page;
+    }
+
+    public void setNativeLayout(FrameLayout nativeLayout) {
+        this.nativeLayout = nativeLayout;
     }
 
     protected void saveInsertShowTime() {
