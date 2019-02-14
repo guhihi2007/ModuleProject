@@ -23,4 +23,6 @@
 
     <color name="text_light_gray">#767676</color>
 
+    <color name="leading_title">#444444</color>
+
 </resources>

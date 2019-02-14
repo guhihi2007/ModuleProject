@@ -37,7 +37,6 @@ android {
         debug {
             buildConfigField("String","AD_HOST", rootProject.ext.host.ad)
             buildConfigField("String","CONTENT_HOST", rootProject.ext.host.content)
-
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

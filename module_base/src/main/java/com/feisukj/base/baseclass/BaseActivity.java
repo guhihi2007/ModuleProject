@@ -27,7 +27,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     public Activity mContext;
 
     protected ImmersionBar mImmersionBar;
-//    protected DaoSession daoSession;
+    //    protected DaoSession daoSession;
     protected LoadingDialog loadingDialog;//正在加载
     protected ActionBar actionBar;
 
@@ -99,8 +99,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     /**
      * 初始化View
      */
-    protected void initView() {
-    }
+    protected abstract void initView();
 
     /**
      * 初始化数据

@@ -12,4 +12,9 @@ import com.feisukj.base.baseclass.BaseActivity
 @Route(path = ARouterConfig.HOME_ACTIVITY)
 class HomeActivity : BaseActivity() {
     override fun getLayoutId(): Int = R.layout.activity_home
+
+    override fun initView() {
+        val notification = PlayNotification(this, HomeActivity::class.java)
+        notification.sendNotification("HomeActivity", "PlayNotification")
+    }
 }
