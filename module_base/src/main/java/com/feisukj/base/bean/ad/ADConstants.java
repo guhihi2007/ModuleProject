@@ -11,6 +11,7 @@ public class ADConstants {
     public static final String START_PAGE = "start_page";
     public static final String CATEGORY_PAGE = "category_page";//分类页面
     public static final String DETAIL_PAGE = "music_detail";//详情页面
+    public static final String HOME_PAGE = "home_page";//详情页面
 
     public static final String HOME_PAGE_LIST1 = "home_page_list1";//主页列表1
     public static final String HOME_PAGE_LIST2 = "home_page_list2";//主页列表2

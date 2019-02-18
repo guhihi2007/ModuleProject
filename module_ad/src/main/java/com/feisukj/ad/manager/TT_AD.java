@@ -1,6 +1,7 @@
 package com.feisukj.ad.manager;
 
 import android.annotation.SuppressLint;
+import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.MainThread;
 import android.util.Log;
@@ -53,7 +54,7 @@ public class TT_AD extends AbsADParent implements WeakHandler.IHandler {
     private boolean mHasLoaded;
     private AQuery2 mAQuery;
     //开屏广告加载发生超时但是SDK没有及时回调结果的时候，做的一层保护。
-    private final WeakHandler mHandler = new WeakHandler(this);
+    private final WeakHandler mHandler = new WeakHandler(Looper.getMainLooper(),this);
 
     public TT_AD() {
         TTAdManagerHolder.init(BaseApplication.getApplication());

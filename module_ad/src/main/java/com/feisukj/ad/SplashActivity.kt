@@ -76,6 +76,7 @@ class SplashActivity : AppCompatActivity() {
                     override fun onNext(t: AdsConfig) {
                         val gson = Gson()
                         SPUtil.getInstance().putString(ADConstants.START_PAGE, gson.toJson(t.data?.start_page))
+                        SPUtil.getInstance().putString(ADConstants.HOME_PAGE, gson.toJson(t.data?.home_page))
                         SPUtil.getInstance().putString(ADConstants.CATEGORY_PAGE, gson.toJson(t.data?.category_page))
                         SPUtil.getInstance().putString(ADConstants.DETAIL_PAGE, gson.toJson(t.data?.detail_page))
                         SPUtil.getInstance().putString(ADConstants.START_PAGE, gson.toJson(t.data?.start_page))

@@ -29,14 +29,14 @@ android {
 
     buildTypes {
         release {
-            buildConfigField("String","AD_HOST", rootProject.ext.host.ad)
-            buildConfigField("String","CONTENT_HOST", rootProject.ext.host.content)
+            buildConfigField("String", "AD_HOST", rootProject.ext.host.ad)
+            buildConfigField("String", "CONTENT_HOST", rootProject.ext.host.content)
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            buildConfigField("String","AD_HOST", rootProject.ext.host.ad)
-            buildConfigField("String","CONTENT_HOST", rootProject.ext.host.content)
+            buildConfigField("String", "AD_HOST", rootProject.ext.host.ad)
+            buildConfigField("String", "CONTENT_HOST", rootProject.ext.host.content)
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -95,6 +95,10 @@ android {
         //黄油刀
 //    api rootProject.ext.dependencies["butterknife"]
 //    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+
+        //工具包
+//    api rootProject.ext.dependencies["utils"]
+
         /********基础依赖:所有module通用依赖*********/
 
         /********第三方依赖:在需要单独调用的module添加即可，如果放开的话，所有module都可以调用*********/

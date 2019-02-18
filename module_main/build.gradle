@@ -61,6 +61,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //公用依赖包
     implementation project(path: ':module_base')
+    //广告依赖包
+    implementation project(path: ':module_ad')
 
 
     api rootProject.ext.dependencies["arouter_api"]

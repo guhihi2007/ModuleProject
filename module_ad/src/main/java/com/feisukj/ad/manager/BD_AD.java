@@ -114,7 +114,7 @@ public class BD_AD extends AbsADParent {
                 public void onAdClick() {
                     LogUtils.INSTANCE.i(TAG, "BAIdu-onAdClick");
                 }
-            }, BuildConfig.BAIDU_APPID, true);
+            }, BuildConfig.BAIDU_SPLASH_ID, true);
         } catch (Throwable e) {
             e.printStackTrace();
             ((SplashActivity) mActivity).checkIn();

@@ -19,10 +19,10 @@ ext {
             GOOGLE_INSERT_ID : '"ca-app-pub-3147830794099363/2941607001"',
             GOOGLE_NATIVE_ID : '"ca-app-pub-2144172051563531/1065857240"',
 
-            BAIDU_APPID      : '"123"',
-            BAIDU_SPLASH_ID  : '"123"',
-            BAIDU_BANNER_ID  : '"123"',
-            BAIDU_INSERT_ID  : '"123"',
+            BAIDU_APPID      : '"caecff65"',
+            BAIDU_SPLASH_ID  : '"5994298"',
+            BAIDU_BANNER_ID  : '"5994297"',
+            BAIDU_INSERT_ID  : '"5994299"',
 
             TOUTIAO_APPID    : '"5010536"',
             TOUTIAO_SPLASH_ID: '"810536443"',
@@ -38,14 +38,13 @@ ext {
     ]
     //版本号
     versions = [
-//            applicationId    : "com.feisukj.module",        //应用ID
-applicationId    : "cn.yuntk.comic",        //应用ID
-versionCode      : 20010,                    //版本号
-versionName      : "1.0",              //版本名称
+            applicationId    : "com.bbaofshi6426.app",        //应用ID
+            versionCode      : 20010,                    //版本号
+            versionName      : "1.0",              //版本名称
 
-compileSdkVersion: 28,
-minSdkVersion    : 17,
-targetSdkVersion : 28,
+            compileSdkVersion: 28,
+            minSdkVersion    : 17,
+            targetSdkVersion : 28,
 
     ]
     dependencies = ["appcompat_v7"         : "com.android.support:appcompat-v7:28.0.0",
@@ -96,6 +95,9 @@ targetSdkVersion : 28,
 
                     //数据库
                     "greenDao"             : "org.greenrobot:greendao:3.2.2",
+
+                    //工具包
+                    "utils"                : "com.blankj:utilcode:1.23.4",
 
                     //BaseRecyclerView
                     "BaseRecyclerView"     : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30",
