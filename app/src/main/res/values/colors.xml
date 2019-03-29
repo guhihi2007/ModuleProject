@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    <color name="common_touch_bg">#E3E3E3</color>
+    <color name="common_bg">@color/white</color>
+    <color name="divider_grey_personal_center">#eeeeee</color>
+
 </resources>

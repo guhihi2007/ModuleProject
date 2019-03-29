@@ -16,4 +16,8 @@ public interface ARouterConfig {
     //首页
     String HOME_ACTIVITY = "/content/main/HomeActivity";
 
+    //App信息
+    String APPINFO_ACTIVITY = "/app/main/HomeActivity";
+
+
 }

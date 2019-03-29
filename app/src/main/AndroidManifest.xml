@@ -16,6 +16,7 @@
         <meta-data
             android:name="CHANNEL"
             android:value="${CHANNEL_VALUE}" />
+        <activity android:name=".appinfo.AppInfoActivity" />
     </application>
 
 </manifest>
