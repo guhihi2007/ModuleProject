@@ -77,8 +77,9 @@ public class AdManager implements OnInsertADListener {
                 String string = SPUtil.getInstance().getString(page);
                 LogUtils.INSTANCE.e(TAG, "pool run page==" + page + ",string==" + string);
 
-                if (!TextUtils.isEmpty(string)) {
-                    pageBean = GsonUtils.parseObject(string, TypeBean.class);
+                if (page != null) {
+                    if (!TextUtils.isEmpty(string))
+                        pageBean = GsonUtils.parseObject(string, TypeBean.class);
                     LogUtils.INSTANCE.e(TAG, "pool run pageBean==" + SPUtil.getInstance().getString(page));
                     showByType();
                 }
@@ -305,25 +306,24 @@ public class AdManager implements OnInsertADListener {
 
     //根据广告广告源显示相应的广告类型
     private void showByOrigin(AD.AdOrigin origin, AD.AdType type) {
-//        switch (origin) {
-//            case gdt:
-//                adView = new GDT_AD();
-//                adView.setSkipVew(skipView);
-//                LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   广点通- gdt - " + page + " ---" + type);
-//                break;
-//            case google:
-//                LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   Google-- " + page + " ---" + type);
-//                adView = new Google_AD();
-//                break;
-//            case bd:
-//                LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   百度-- " + page + " ---" + type);
-//                adView = new BD_AD();
-//            case toutiao:
-//        LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   头条-- " + page + " ---" + type);
-//                adView = new TT_AD();
-//                break;
-//        }
-        adView = new BD_AD();
+        switch (origin) {
+            case gdt:
+                adView = new GDT_AD();
+                adView.setSkipVew(skipView);
+                LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   广点通- gdt - " + page + " ---" + type);
+                break;
+            case google:
+                LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   Google-- " + page + " ---" + type);
+                adView = new Google_AD();
+                break;
+            case bd:
+                LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   百度-- " + page + " ---" + type);
+                adView = new BD_AD();
+            case toutiao:
+        LogUtils.INSTANCE.i(TAG, "AdManager showByOrigin   头条-- " + page + " ---" + type);
+                adView = new TT_AD();
+                break;
+        }
 
         adView.setActivity(activity);
         adView.setContainer(container);
