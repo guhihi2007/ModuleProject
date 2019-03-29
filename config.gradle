@@ -32,14 +32,14 @@ ext {
     ]
     //url配置
     host = [
-            ad     : '"http://114.215.47.46:8080"',//广告host
+            ad     : '"http://114.215."',//广告host
             content: '"https://open.staging.qingting.fm"'//内容host
 
     ]
     //版本号
     versions = [
-            applicationId    : "com.bbaofshi6426.app",        //应用ID
-            applicationName  : "飞速Module项目",
+            applicationId    : "com.moudle.app",        //应用ID
+            applicationName  : "Module项目",
             versionCode      : 20010,                    //版本号
             versionName      : "1.0",              //版本名称
 
