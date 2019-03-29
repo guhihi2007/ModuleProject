@@ -24,5 +24,7 @@
     <color name="text_light_gray">#767676</color>
 
     <color name="leading_title">#444444</color>
-
+    <color name="common_touch_bg">#E3E3E3</color>
+    <color name="common_bg">@color/white</color>
+    <color name="divider_grey_personal_center">#eeeeee</color>
 </resources>

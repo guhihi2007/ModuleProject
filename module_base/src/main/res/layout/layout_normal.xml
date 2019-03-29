@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/layout_normal"
+    android:layout_height="@android:dimen/notification_large_icon_height"
+    android:background="@color/common_bg">
+
+    <!--<ImageView-->
+        <!--android:id="@+id/iv_icon"-->
+        <!--android:layout_width="@android:dimen/notification_large_icon_width"-->
+        <!--android:layout_height="@android:dimen/notification_large_icon_height"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:contentDescription="@null"-->
+        <!--android:scaleType="fitCenter"-->
+        <!--android:src="@mipmap/ic_launcher"/>-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/iv_close"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:padding="@dimen/padding_5"-->
+        <!--android:src="@mipmap/icon_stop" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_title"-->
+        <!--android:layout_width="@dimen/padding_100"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="@dimen/padding_40"-->
+        <!--android:layout_marginTop="@dimen/padding_5"-->
+        <!--android:layout_toEndOf="@id/iv_icon"-->
+        <!--android:ellipsize="end"-->
+        <!--android:singleLine="true"-->
+        <!--android:textColor="@color/leading_title"-->
+        <!--android:textSize="@dimen/font15" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_subtitle"-->
+        <!--android:layout_width="@dimen/padding_100"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/tv_title"-->
+        <!--android:layout_marginStart="@dimen/padding_40"-->
+        <!--android:layout_marginTop="@dimen/padding_10"-->
+        <!--android:layout_toEndOf="@id/iv_icon"-->
+        <!--android:ellipsize="end"-->
+        <!--android:fadingEdge="horizontal"-->
+        <!--android:maxLines="1"-->
+        <!--android:textColor="@color/leading_title" />-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginEnd="@dimen/padding_30"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/play_start"-->
+            <!--android:layout_width="@android:dimen/notification_large_icon_height"-->
+            <!--android:layout_height="@android:dimen/notification_large_icon_height"-->
+            <!--android:background="@drawable/touch_bg"-->
+            <!--android:padding="10dp"-->
+            <!--android:src="@drawable/play_pause_selector" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/play_next"-->
+            <!--android:layout_width="@android:dimen/notification_large_icon_height"-->
+            <!--android:layout_height="@android:dimen/notification_large_icon_height"-->
+            <!--android:background="@drawable/touch_bg"-->
+            <!--android:padding="10dp"-->
+            <!--android:src="@drawable/next_selector" />-->
+    <!--</LinearLayout>-->
+
+
+</RelativeLayout>
