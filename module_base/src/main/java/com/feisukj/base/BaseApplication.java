@@ -32,7 +32,7 @@ public class BaseApplication extends Application {
     public static boolean isForeground;
     public static boolean isFromStart;
     public static String channel;
-
+//    public static Daosession daoSession
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
@@ -122,5 +122,7 @@ public class BaseApplication extends Application {
     public static void setChannel(String channel) {
         BaseApplication.channel = channel;
     }
+
+
 }
 

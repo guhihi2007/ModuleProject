@@ -92,10 +92,6 @@ android {
         //设置内项目按下的效果
         api rootProject.ext.dependencies["ripple"]
 
-        //黄油刀
-//    api rootProject.ext.dependencies["butterknife"]
-//    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
-
         //工具包
 //    api rootProject.ext.dependencies["utils"]
 
@@ -128,11 +124,8 @@ android {
 
     }
 
-    /***********数据库:每个module可单独配置，也可以统一使用以下**********/
-//    greendao {
-//        schemaVersion 1
-//        daoPackage 'com.feisukj.base.db.gen'
-//        targetGenDir 'src/main/java'
-//    }
+    /***********数据库**********/
+    //在需要用数据的lib，依赖module_dao即可，在module_dao内新建文件夹，存放其他lib的entity,每个lib新建一个文件夹，便于管理
+    //关于Daosession初始化，把BaseApplication内的initDao()方法，放到主activity，然后初始化完成设置给BaseApplication内的daosession
 }
 

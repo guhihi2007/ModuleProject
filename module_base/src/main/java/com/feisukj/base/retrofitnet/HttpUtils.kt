@@ -1,5 +1,6 @@
 package com.feisukj.base.retrofitnet
 
+import android.support.annotation.NonNull
 import com.feisukj.base.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -16,9 +17,22 @@ import java.util.concurrent.TimeUnit
 class HttpUtils private constructor() {
     private val retrofitForToken: Retrofit
     private val retrofitForAD: Retrofit
+    private val retrofit: Retrofit by lazy {
+        Retrofit.Builder()
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .baseUrl(host)
+                .build()
+    }
+    val logging = LoggingInterceptor(Logger())
+    val okHttpClient = OkHttpClient().newBuilder()
+            .addInterceptor(logging)
+            .connectTimeout(9, TimeUnit.SECONDS)
+            .build()
+
 
     init {
-        val logging = LoggingInterceptor(Logger())
         logging.level = LoggingInterceptor.Level.BODY
 //        val interceptor = Interceptor { chain ->
 //            val request = chain.request().newBuilder().addHeader("QT-Access-Token", token).build()
@@ -53,14 +67,29 @@ class HttpUtils private constructor() {
     }
 
     companion object {
+        var host: String? = null
 
         private val instance: HttpUtils
             get() = SingletonHolder.INSTANCE
 
-        fun <T> setService(clazz: Class<T>): T {
+        /**
+         * 用于设置动态host
+         */
+        fun <T> setService(@NonNull host: String, clazz: Class<T>): T {
+            this.host = host
+            return HttpUtils.instance.retrofit.create(clazz)
+        }
+
+        /**
+         * 用于设置了指定host
+         */
+        fun <T> setServiceForToken(clazz: Class<T>): T {
             return HttpUtils.instance.retrofitForToken.create(clazz)
         }
 
+        /**
+         * 用于需要添加Header
+         */
         fun <T> setServiceWithToken(mToken: String, clazz: Class<T>): T {
             val logging = LoggingInterceptor(Logger())
             logging.level = LoggingInterceptor.Level.BODY
@@ -83,6 +112,9 @@ class HttpUtils private constructor() {
                     .build().create(clazz)
         }
 
+        /**
+         * 用于广告配置请求
+         */
         fun <T> setServiceForADConfig(clazz: Class<T>): T {
             return HttpUtils.instance.retrofitForAD.create(clazz)
         }

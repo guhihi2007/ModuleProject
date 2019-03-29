@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion rootProject.ext.versions.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.versions.minSdkVersion
+        targetSdkVersion rootProject.ext.versions.targetSdkVersion
+        versionCode rootProject.ext.versions.versionCode
+        versionName rootProject.ext.versions.versionName
+
+        //MultiDex分包方法
+        multiDexEnabled true
+
+//        //Arouter路由配置
+//        kapt {
+//            arguments {
+//                arg("AROUTER_MODULE_NAME", project.getName())
+//            }
+//        }
+        //防止编译的时候oom、GC
+        dexOptions {
+            javaMaxHeapSize "4g"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //Arouter路由
+//    api rootProject.ext.dependencies["arouter_api"]
+//    api rootProject.ext.dependencies["arouter_annotation"]
+//    kapt rootProject.ext.dependencies["arouter_compiler"]
+    //MultiDex分包方法
+    api rootProject.ext.dependencies["multidex"]
+    //GreenDao
+    api rootProject.ext.dependencies["greenDao"]
+
+}
+
+greendao {
+    schemaVersion 1
+    daoPackage 'com.feisu.greendao.db.gen'
+    targetGenDir 'src/main/java'
+}

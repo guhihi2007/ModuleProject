@@ -69,61 +69,61 @@ android {
 
         _anzhi {
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+            manifestPlaceholders = [app_name_channel: rootProject.ext.versions.applicationName,
                                     CHANNEL_VALUE:"_anzhi"]
         }
         _lenovo {
 
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+            manifestPlaceholders = [app_name_channel: rootProject.ext.versions.applicationName,
                                     CHANNEL_VALUE:"_lenovo"]
         }
         _oppo {
 
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+            manifestPlaceholders = [app_name_channel: rootProject.ext.versions.applicationName,
                                     CHANNEL_VALUE:"_oppo"]
         }
         _vivo {
 
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+            manifestPlaceholders = [app_name_channel: rootProject.ext.versions.applicationName,
                                     CHANNEL_VALUE:"_vivo"]
         }
         _360 {
 
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+            manifestPlaceholders = [app_name_channel: rootProject.ext.versions.applicationName,
                                     CHANNEL_VALUE:"_360"]
         }
         _xiaomi {
 
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+            manifestPlaceholders = [app_name_channel: rootProject.ext.versions.applicationName,
                                     CHANNEL_VALUE:"_xiaomi"]
         }
         _yingyongbao {
 
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+            manifestPlaceholders = [app_name_channel: rootProject.ext.versions.applicationName,
                                     CHANNEL_VALUE:"_yingyongbao"]
         }
         _baidu {
 
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+            manifestPlaceholders = [app_name_channel: rootProject.ext.versions.applicationName,
                                     CHANNEL_VALUE:"_baidu"]
         }
         _huawei {
 
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+            manifestPlaceholders = [app_name_channel: rootProject.ext.versions.applicationName,
                                     CHANNEL_VALUE:"_huawei"]
         }
         _meizu {
 
             applicationId rootProject.ext.versions.applicationId
-            manifestPlaceholders = [app_name_channel: "飞速Module项目",
+            manifestPlaceholders = [app_name_channel: rootProject.ext.versions.applicationName,
                                     CHANNEL_VALUE:"_meizu"]
         }
     }

@@ -39,6 +39,7 @@ ext {
     //版本号
     versions = [
             applicationId    : "com.bbaofshi6426.app",        //应用ID
+            applicationName  : "飞速Module项目",
             versionCode      : 20010,                    //版本号
             versionName      : "1.0",              //版本名称
 
@@ -60,10 +61,6 @@ ext {
                     "arouter_api"          : "com.alibaba:arouter-api:1.4.0",
                     "arouter_compiler"     : "com.alibaba:arouter-compiler:1.2.1",
                     "arouter_annotation"   : "com.alibaba:arouter-annotation:1.0.4",
-
-                    //黄油刀
-                    "butterknife_compiler" : "com.jakewharton:butterknife-compiler:8.4.0",
-                    "butterknife"          : "com.jakewharton:butterknife:8.4.0",
 
                     //事件订阅
                     "eventbus"             : "org.greenrobot:eventbus:3.0.0",
